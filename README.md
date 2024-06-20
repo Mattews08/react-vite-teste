@@ -20,14 +20,16 @@
 
 2. **Certifique-se de ter o Node.js e o Yarn instalados. Em seguida, execute:**
    ```sh
+   npm install
    yarn install
 
 ## Executar o Projeto
 
 3. **Certifique-se de ter o Node.js e o Yarn instalados. Em seguida, execute:**
    ```sh
-   yarn start
-   A aplicação estará disponível em http://localhost:3000.
+   npm run dev
+   yarn run dev
+   A aplicação estará disponível em http://localhost:5173/.
 
 
 ## Funcionalidades Implementadas
