@@ -13,7 +13,7 @@
 
 1. **Clonar o Repositório**
    ```sh
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/Mattews08/react-vite-teste.git
    cd seu-repositorio
 
 ## Instalar Dependências
