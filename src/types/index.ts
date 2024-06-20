@@ -1,3 +1,4 @@
+// src/types/index.ts
 export interface WebSettings {
   id: number;
   venueId: number;
@@ -12,7 +13,7 @@ export interface Venue {
   id: number;
   name: string;
   internalName: string;
-  description: string | null;
+  description: string;
   liveFlag: number;
   demoFlag: number;
   address1: string;
@@ -29,6 +30,11 @@ export interface Venue {
   ccy: string;
   ccySymbol: string;
   currency: string;
+}
+
+export interface Image {
+  id: number;
+  image: string;
 }
 
 export interface MenuItem {
@@ -49,7 +55,7 @@ export interface MenuItem {
 export interface Section {
   id: number;
   name: string;
-  description: string | null;
+  description: string;
   position: number;
   visible: number;
   images: Image[];
@@ -62,11 +68,6 @@ export interface Menu {
   type: string;
   collapse: number;
   sections: Section[];
-}
-
-export interface Image {
-  id: number;
-  image: string;
 }
 
 export interface Modifier {

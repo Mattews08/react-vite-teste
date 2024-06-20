@@ -1,10 +1,9 @@
-// src/features/menu/menuSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Menu, MenuItem } from "../../types";
+import { Section } from "../../types";
 
 interface MenuState {
-  items: MenuItem[];
+  items: Section[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
@@ -16,10 +15,11 @@ const initialState: MenuState = {
 };
 
 export const fetchMenu = createAsyncThunk("menu/fetchMenu", async () => {
-  const response = await axios.get<Menu>(
+  const response = await axios.get(
     "https://cdn-dev.preoday.com/challenge/menu"
   );
-  return response.data.sections.flatMap((section) => section.items);
+  console.log("Fetched menu data:", response.data.sections);
+  return response.data.sections;
 });
 
 const menuSlice = createSlice({
@@ -33,9 +33,10 @@ const menuSlice = createSlice({
       })
       .addCase(
         fetchMenu.fulfilled,
-        (state, action: PayloadAction<MenuItem[]>) => {
+        (state, action: PayloadAction<Section[]>) => {
           state.status = "succeeded";
           state.items = action.payload;
+          console.log("Menu sections loaded:", state.items);
         }
       )
       .addCase(fetchMenu.rejected, (state, action) => {

@@ -1,30 +1,55 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import {
-  CartItem as CartItemType,
-  removeItem,
-} from "../features/cart/cartSlice";
+import { incrementItem, decrementItem } from "../features/cart/cartSlice";
+import { CgMathPlus } from "react-icons/cg";
+import { LuMinus } from "react-icons/lu";
 
 interface CartItemProps {
-  item: CartItemType;
+  item: {
+    id: string;
+    name: string;
+    price: number;
+    quantity: number;
+  };
 }
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const dispatch = useDispatch();
+  const primaryColour = "#6B4A2E"; // Substitua pela cor vinda da API, se necessário
 
-  const handleRemove = () => {
-    dispatch(removeItem(item.id));
+  const handleIncrement = () => {
+    dispatch(incrementItem(item.id));
+  };
+
+  const handleDecrement = () => {
+    dispatch(decrementItem(item.id));
   };
 
   return (
-    <div className="border p-2 flex justify-between items-center">
+    <div className="flex justify-between items-center mb-4">
       <div>
-        <h3 className="text-xl">{item.name}</h3>
-        <p>Quantity: {item.quantity}</p>
+        <p className="font-medium text-lg mb-2">{item.name}</p>
+        <div className="flex items-center">
+          <button
+            onClick={handleDecrement}
+            className="p-2 bg-gray-200 flex justify-center items-center w-8 h-8 rounded-full"
+            style={{ backgroundColor: primaryColour }}
+          >
+            <LuMinus size={20} color="#FFFFFF" />
+          </button>
+          <span className="mx-4 font-medium">{item.quantity}</span>
+          <button
+            onClick={handleIncrement}
+            className={`p-2 flex justify-center text-white items-center w-8 h-8 rounded-full`}
+            style={{ backgroundColor: primaryColour }}
+          >
+            <CgMathPlus size={20} color="#FFFFFF" />
+          </button>
+        </div>
       </div>
-      <button onClick={handleRemove} className="bg-red-500 text-white p-2">
-        Remove
-      </button>
+      <p className="text-primaryText font-medium text-base">
+        R${item.price.toFixed(2)}
+      </p>
     </div>
   );
 };
