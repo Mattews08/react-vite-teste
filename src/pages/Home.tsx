@@ -73,12 +73,12 @@ const Home: React.FC = () => {
         style={{ backgroundImage: `url(${venue?.webSettings.bannerImage})` }}
       ></header>
 
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4 md:px-0">
         <SearchBar onSearch={setSearchQuery} />
       </div>
 
-      <main className="container mx-auto flex flex-col md:flex-row space-x-4 bg-bgPrimary px-4 md:px-10 py-9">
-        <div className="flex-grow bg-white px-6 shadow-md">
+      <main className="container mx-auto flex flex-col md:flex-row space-x-4 bg-transparent md:bg-bgPrimary px-4 md:px-10 py-9">
+        <div className="flex-grow bg-transparent md:bg-white px-6 md:shadow-md">
           <SectionFilter
             sections={sections}
             selectedSectionId={selectedSectionId}
@@ -124,14 +124,6 @@ const Home: React.FC = () => {
           <Cart />
         </div>
       </main>
-      <footer
-        className="text-center p-4"
-        style={{
-          backgroundColor: venue?.webSettings.primaryColour,
-        }}
-      >
-        <p className="text-white">© 2024 BURGERS RESTAURANT</p>
-      </footer>
     </div>
   );
 };

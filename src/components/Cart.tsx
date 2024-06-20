@@ -5,6 +5,9 @@ import CartItem from "./CartItem";
 
 const Cart: React.FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
+  const venue = useSelector((state: RootState) => state.venue.venue);
+  const primaryColour = venue?.webSettings.primaryColour || "#6B4A2E";
+
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const total = cartItems.reduce(
@@ -37,15 +40,24 @@ const Cart: React.FC = () => {
               <p className="text-right font-semibold text-lg">Total:</p>
               <p> R${total.toFixed(2)}</p>
             </div>
+            <div className="p-4 md:hidden">
+              <button
+                className="w-full text-white py-2 rounded-full"
+                style={{ backgroundColor: primaryColour }}
+                onClick={() => console.log("Checkout now")}
+              >
+                Checkout Now
+              </button>
+            </div>
           </div>
         )}
       </div>
 
-      <div className="fixed bottom-4 right-4 md:hidden">
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 md:hidden">
         <button
           onClick={toggleCart}
           className="bg-primary text-white py-2 px-4 rounded-full shadow-lg"
-          style={{ backgroundColor: "#6B4A2E" }} // Use a cor primaria
+          style={{ backgroundColor: primaryColour }}
         >
           Your basket • {cartItems.length} item{cartItems.length !== 1 && "s"}
         </button>
@@ -73,6 +85,15 @@ const Cart: React.FC = () => {
               <div className="border-t border-[#d6dadf] bg-[#f8f9fa] p-4 flex justify-between">
                 <p className="text-right font-semibold text-lg">Total:</p>
                 <p> R${total.toFixed(2)}</p>
+              </div>
+              <div className="p-4">
+                <button
+                  className="w-full text-white py-2 rounded-full"
+                  style={{ backgroundColor: primaryColour }}
+                  onClick={() => console.log("Checkout now")}
+                >
+                  Checkout Now
+                </button>
               </div>
             </div>
           )}

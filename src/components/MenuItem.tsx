@@ -52,24 +52,28 @@ const MenuItem: React.FC<MenuItemProps> = ({
   };
 
   return (
-    <div className="p-4 mb-4">
+    <div className="p-0 md:p-4 mb-4">
       <div
         className="cursor-pointer flex gap-4 justify-between w-full"
         onClick={() => {
           setIsModalOpen(true);
         }}
       >
-        <div className="flex-1 w-[90%]">
+        <div className="flex-1 md:w-[90%] w-[80%]">
           <h3 className="text-base font-medium mb-2 text-primaryText">
             {name}
           </h3>
-          <p className="mb-2 text-secondaryText">{description}</p>
+          <p className="mb-2 text-secondaryText">
+            {description && description.length > 70
+              ? `${description.substring(0, 70)}...`
+              : description}
+          </p>
           <p className="mb-2 text-[#121212]">
             R${(selectedModifier ? selectedModifier.price : price).toFixed(2)}
           </p>
         </div>
         {imageUrl && (
-          <div className="w-[10%]">
+          <div className="md:w-[10%] w-[20%]">
             <img
               src={imageUrl}
               alt={name}
