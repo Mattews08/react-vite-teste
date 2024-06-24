@@ -15,9 +15,7 @@ const initialState: VenueState = {
 };
 
 export const fetchVenue = createAsyncThunk("venue/fetchVenue", async () => {
-  const response = await axios.get<Venue>(
-    "https://cdn-dev.preoday.com/challenge/venue/9"
-  );
+  const response = await axios.get<Venue>("/api/venue/9");
   return response.data;
 });
 

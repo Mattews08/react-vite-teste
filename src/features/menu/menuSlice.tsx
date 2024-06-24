@@ -15,9 +15,7 @@ const initialState: MenuState = {
 };
 
 export const fetchMenu = createAsyncThunk("menu/fetchMenu", async () => {
-  const response = await axios.get(
-    "https://cdn-dev.preoday.com/challenge/menu"
-  );
+  const response = await axios.get("/api/menu");
   console.log("Fetched menu data:", response.data.sections);
   return response.data.sections;
 });
