@@ -15,8 +15,9 @@ const initialState: MenuState = {
 };
 
 export const fetchMenu = createAsyncThunk("menu/fetchMenu", async () => {
-  const response = await axios.get("/api/menu");
-  console.log("Fetched menu data:", response.data.sections);
+  const response = await axios.get(
+    "https://react-vite-teste.vercel.app/api/menu"
+  );
   return response.data.sections;
 });
 
