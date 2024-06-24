@@ -16,7 +16,7 @@ const initialState: VenueState = {
 
 export const fetchVenue = createAsyncThunk("venue/fetchVenue", async () => {
   const response = await axios.get(
-    "https://react-vite-teste.vercel.app/api/venue/9"
+    "https://react-vite-teste.vercel.app/api/venue"
   );
   return response.data;
 });

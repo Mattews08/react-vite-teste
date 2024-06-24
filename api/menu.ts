@@ -1,4 +1,3 @@
-// Arquivo: /api/menu.js
 import axios from 'axios';
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
